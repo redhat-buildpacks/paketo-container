@@ -162,11 +162,11 @@ spec:
           - name: kind
             value: task
         resolver: bundles
-      #when:
-      #  - input: $(params.prefetch-input)
-      #    operator: notin
-      #    values:
-      #      - ""
+      when:
+        - input: $(params.prefetch-input)
+          operator: notin
+          values:
+            - ""
       workspaces:
         - name: source
           workspace: workspace-amd64
@@ -251,11 +251,11 @@ spec:
           - name: kind
             value: task
         resolver: bundles
-      #when:
-      #  - input: $(params.prefetch-input)
-      #    operator: notin
-      #    values:
-      #      - ""
+      when:
+        - input: $(params.prefetch-input)
+          operator: notin
+          values:
+            - ""
       workspaces:
         - name: source
           workspace: workspace-arm64
