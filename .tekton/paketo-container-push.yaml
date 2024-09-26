@@ -29,9 +29,9 @@ spec:
   - name: prefetch-input
     value: '{"type": "gomod", "path": "."}'
   pipelineRef:
-    name: build-pipeline
+    name: build-pipeline-amd
   workspaces:
-    - name: workspace-amd64
+    - name: workspace
       volumeClaimTemplate:
         spec:
           accessModes:
@@ -39,30 +39,6 @@ spec:
           resources:
             requests:
               storage: 1Gi
-    - name: workspace-arm64
-      volumeClaimTemplate:
-        spec:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 1Gi
-    #- name: workspace-ppc64le
-    #  volumeClaimTemplate:
-    #    spec:
-    #      accessModes:
-    #        - ReadWriteOnce
-    #      resources:
-    #        requests:
-    #          storage: 1Gi
-    #- name: workspace-s390x
-    #  volumeClaimTemplate:
-    #    spec:
-    #      accessModes:
-    #        - ReadWriteOnce
-    #      resources:
-    #        requests:
-    #          storage: 1Gi
     - name: git-auth
       secret:
         secretName: '{{ git_auth_secret }}'
