@@ -70,8 +70,7 @@ spec:
       description: Execute the build with network isolation
       name: hermetic
       type: string
-    - default: |
-        {"type": "gomod"}
+    - default: "gomod"
       description: Build dependencies to be prefetched by Cachi2
       name: prefetch-input
       type: string
