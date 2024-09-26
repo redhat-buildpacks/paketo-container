@@ -13,7 +13,7 @@ metadata:
     appstudio.openshift.io/component: paketo-container
     pipelines.appstudio.openshift.io/type: build
   name: paketo-container-on-push
-  namespace: rhtap-integration-tenant
+  namespace: cmoullia-tenant
 spec:
   params:
   - name: dockerfile
