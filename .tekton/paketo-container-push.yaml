@@ -37,14 +37,14 @@ spec:
           resources:
             requests:
               storage: 1Gi
-    #- name: workspace-arm64
-    #  volumeClaimTemplate:
-    #    spec:
-    #      accessModes:
-    #        - ReadWriteOnce
-    #      resources:
-    #        requests:
-    #          storage: 1Gi
+    - name: workspace-arm64
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
     #- name: workspace-ppc64le
     #  volumeClaimTemplate:
     #    spec:
