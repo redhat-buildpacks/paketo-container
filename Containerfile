@@ -14,7 +14,7 @@ RUN dnf -y install gettext
 
 COPY --from=builder /go/src/buildpacks/pack /usr/bin/pack
 
-WORKDIR /workdirgit
+WORKDIR /workdir
 
 RUN \
   groupadd -g 1000 pack; \
