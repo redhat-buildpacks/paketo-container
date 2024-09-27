@@ -28,6 +28,8 @@ spec:
     value: '{{revision}}'
   - name: prefetch-input
     value: '{"packages": [{"path": "pack", "type": "gomod"}]}' # Don't work -> '{"type": "gomod", "path": "."}'
+  - name: hermetic
+    value: true
   pipelineRef:
     name: build-pipeline
   workspaces:
