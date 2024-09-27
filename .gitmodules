@@ -1,3 +1,4 @@
 [submodule "pack"]
 	path = pack
-	url = https://github.com/buildpacks/pack
+	url = https://github.com/redhat-buildpacks/pack
+	branch = bump-go-version
