@@ -6,7 +6,7 @@ WORKDIR /go/src/buildpacks/pack
 
 COPY pack/ .
 
-RUN CGO_ENABLED=0 go build -ldflags "-s -w" -a ./cmd/pack
+RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -a ./cmd/pack
 
 # Rebase on ubi9
 FROM registry.access.redhat.com/ubi9:latest@sha256:9e6a89ab2a9224712391c77fab2ab01009e387aff42854826427aaf18b98b1ff
