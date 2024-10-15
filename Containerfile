@@ -19,7 +19,7 @@ RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-X github.com/paketo-b
 # Build create-package. Go mod version: 1.23
 WORKDIR /go/src/buildpacks/create-package
 COPY create-package/ .
-RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.23.0 go build -ldflags="-s -w" -o create-package -a ./cmd/create-package/main.go
+RUN CGO_ENABLED=0 GOTOOLCHAIN=local go build -ldflags="-s -w" -o create-package -a ./cmd/create-package/main.go
 
 # Rebase on ubi9
 FROM registry.access.redhat.com/ubi9:latest@sha256:9e6a89ab2a9224712391c77fab2ab01009e387aff42854826427aaf18b98b1ff
