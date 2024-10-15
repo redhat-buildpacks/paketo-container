@@ -1,0 +1,7 @@
+contentOrigin:
+  repofiles:
+    - ./ubi.repo
+packages:
+  - golang
+  - podman
+  - gettext
