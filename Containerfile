@@ -9,17 +9,17 @@ RUN dnf -y install golang
 # Build pack: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/pack
 COPY pack/ .
-RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -a ./cmd/pack
+RUN CGO_ENABLED=0 go build -ldflags "-s -w" -a ./cmd/pack
 
 # Build jam: Go mod version: 1.18
 WORKDIR /go/src/buildpacks/jam
 COPY jam/ .
-RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-X github.com/paketo-buildpacks/jam/v2/commands.jamVersion=v2.9.0" -o jam main.go
+RUN CGO_ENABLED=0 go build -ldflags "-X github.com/paketo-buildpacks/jam/v2/commands.jamVersion=v2.9.0" -o jam main.go
 
 # Build create-package. Go mod version: 1.23
 WORKDIR /go/src/buildpacks/create-package
 COPY create-package/ .
-RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.23.0 go build -ldflags="-s -w" -o create-package -a ./cmd/create-package/main.go
+RUN CGO_ENABLED=0 go build -ldflags="-s -w" -o create-package -a ./cmd/create-package/main.go
 
 # Rebase on ubi9
 FROM registry.access.redhat.com/ubi9:latest@sha256:9e6a89ab2a9224712391c77fab2ab01009e387aff42854826427aaf18b98b1ff
