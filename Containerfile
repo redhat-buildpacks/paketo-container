@@ -13,7 +13,7 @@ RUN dnf -y install golang
 # Build pack: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/pack
 COPY pack/ .
-RUN CGO_ENABLED=0 go build -ldflags "-s -w" -a ./cmd/pack
+RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -a ./cmd/pack
 
 # Build jam: Go mod version: 1.18
 WORKDIR /go/src/buildpacks/jam
