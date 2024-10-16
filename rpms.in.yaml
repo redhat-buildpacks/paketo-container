@@ -3,5 +3,5 @@ contentOrigin:
     - ./ubi.repo
 packages:
   - golang
-  - podman
+  - jq
   - gettext
