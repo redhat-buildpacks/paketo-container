@@ -5,8 +5,15 @@ and available at quay.io/redhat-user-workloads/cmoullia-tenant/paketo-container/
 
 # How to guide
 
-This section details what you should do as developer in order to build an image that you could use
-on konflux using the task: `build-container`.
+This section details what you should do as developer to design a project able to create an image packaging the executable that you need
+and that you will next use on konflux to build your own artefacts in a hermetic environment. You will then be able to replace the default `buildah` image with yours
+within the task: `build-container`.
+
+
+
+
+
+
 
 
 
