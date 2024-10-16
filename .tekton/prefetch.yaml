@@ -212,10 +212,6 @@ spec:
           update-ca-trust
         fi
         
-        echo "Let's try to debug the git remote error ...."
-        source /venv/bin/activate
-        python3 /var/workdir/source/.tekton/git-fetch.py /var/workdir/source
-        
         cachi2 --log-level="$LOG_LEVEL" $config_flag fetch-deps \
           $dev_pacman_flag \
           --source=/var/workdir/source \

@@ -54,23 +54,23 @@ spec:
           workspace: git-auth
     - name: prefetch-dependencies
       taskRef:
-        #resolver: git
-        #params:
-        #  - name: url
-        #    value: https://github.com/redhat-buildpacks/paketo-container.git
-        #  - name: revision
-        #    value: main
-        #  - name: pathInRepo
-        #    value: .tekton/prefetch.yaml
-
-        resolver: bundles
+        resolver: git
         params:
-          - name: name
-            value: prefetch-dependencies-oci-ta
-          - name: bundle
-            value: quay.io/konflux-ci/tekton-catalog/task-prefetch-dependencies-oci-ta:0.1@sha256:621b13ab4a01a366a2b1d8403cf06b2b7418afd926d13678c4432858514407d3
-          - name: kind
-            value: task
+          - name: url
+            value: https://github.com/redhat-buildpacks/paketo-container.git
+          - name: revision
+            value: main
+          - name: pathInRepo
+            value: .tekton/prefetch.yaml
+
+        #resolver: bundles
+        #params:
+        #  - name: name
+        #    value: prefetch-dependencies-oci-ta
+        #  - name: bundle
+        #    value: quay.io/konflux-ci/tekton-catalog/task-prefetch-dependencies-oci-ta:0.1@sha256:621b13ab4a01a366a2b1d8403cf06b2b7418afd926d13678c4432858514407d3
+        #  - name: kind
+        #    value: task
       params:
         - name: input
           value: "$(params.prefetch-input)"
