@@ -212,6 +212,10 @@ spec:
           update-ca-trust
         fi
         
+        echo "## Some debug messages"
+        git branch
+        git show -s --pretty='oneline'
+        
         cachi2 --log-level="$LOG_LEVEL" $config_flag fetch-deps \
           $dev_pacman_flag \
           --source=/var/workdir/source \
