@@ -213,6 +213,7 @@ spec:
         fi
         
         echo "## Some debug messages"
+        cd /var/workdir/source
         git branch
         git show -s --pretty='oneline'
         
