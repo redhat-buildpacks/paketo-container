@@ -2,7 +2,7 @@
 # Use the same image as syft ...
 FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:v1.21 AS build
 
-RUN dnf -y install golang
+# RUN dnf -y install golang
 
 # Build pack: Go mod version: 1.22.5
 #WORKDIR /go/src/buildpacks/syft
