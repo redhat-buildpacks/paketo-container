@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi9/ubi:latest@sha256:b00d5990a00937bd1ef7f4454
 # Use the same image as syft ...
 # FROM brew.registry.redhat.io/rh-osbs/openshift-golang-builder:v1.21 AS builder
 
-RUN dnf -y install golang
+RUN dnf -y install golang jq podman
 
 # Build pack: Go mod version: 1.22.5
 #WORKDIR /go/src/buildpacks/syft
