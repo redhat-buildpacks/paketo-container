@@ -10,7 +10,7 @@ RUN dnf -y install golang
 # Build toml: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/toml
 COPY toml/ .
-RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -o build/syft -a ./cmd/tomljson/main.go
+RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -a ./cmd/tomljson/main.go
 
 # Build pack: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/pack
