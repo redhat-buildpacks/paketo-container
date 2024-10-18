@@ -18,6 +18,7 @@ is pushed on the quay registry: https://quay.io/repository/redhat-user-workloads
 You can check locally the availability of the tools by running this command:
 ```bash
 podman run -it quay.io/redhat-user-workloads/cmoullia-tenant/paketo-container/paketo-container:<TAG> pack
+podman run -it -v "$(pwd):/source:Z" quay.io/redhat-user-workloads/cmoullia-tenant/paketo-container/paketo-container:$TAG tomljson /source/builder.toml
 ```
 
 # How to guide
