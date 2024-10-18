@@ -1,6 +1,7 @@
 contentOrigin:
   repofiles:
-    - ./ubi.repo
+    #- ./ubi.repo
+    - ./fedora.repo
 packages:
   - golang
   - podman
