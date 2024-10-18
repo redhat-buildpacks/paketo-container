@@ -54,6 +54,8 @@ spec:
           workspace: git-auth
     - name: prefetch-dependencies
       taskRef:
+        # Git task created to debug a git issue discovered with cachi2:
+        # https://github.com/containerbuildsystem/cachi2/issues/685
         # resolver: git
         # params:
         #   - name: url

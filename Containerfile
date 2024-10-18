@@ -7,6 +7,11 @@ RUN dnf -y install golang
 #COPY syft/ .
 #RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.5 go build -ldflags "-s -w -X main.version=1.14.x" -o build/syft -a ./cmd/syft/main.go
 
+# Build toml: Go mod version: 1.22.0
+WORKDIR /go/src/buildpacks/toml
+COPY toml/ .
+RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -o build/syft -a ./cmd/tomljson/main.go
+
 # Build pack: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/pack
 COPY pack/ .
@@ -27,6 +32,7 @@ FROM registry.access.redhat.com/ubi9:latest@sha256:9e6a89ab2a9224712391c77fab2ab
 RUN dnf -y install gettext jq podman
 
 #COPY --from=builder /go/src/buildpacks/syft/build/syft                 /usr/bin/syft
+COPY --from=builder /go/src/buildpacks/toml/tomljson                   /usr/bin/tomljson
 COPY --from=builder /go/src/buildpacks/pack/pack                       /usr/bin/pack
 COPY --from=builder /go/src/buildpacks/jam/jam                         /usr/bin/jam
 COPY --from=builder /go/src/buildpacks/create-package/create-package   /usr/bin/create-package
