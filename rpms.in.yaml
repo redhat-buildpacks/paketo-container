@@ -1,7 +1,7 @@
 contentOrigin:
-  repofiles:
-    #- ./ubi.repo
-    - ./fedora.repo
+  repos:
+    - repoid: fedora
+      baseurl: https://kojipkgs.fedoraproject.org/compose/40/latest-Fedora-40/compose/Everything/x86_64/os/
 packages:
   - golang
   - podman
