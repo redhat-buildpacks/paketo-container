@@ -1,6 +1,6 @@
 # konflux-ci/paketo
 
-This project contains the information used by [cachi2](containerbuildsystem), executed part of the Konflux `prefetch-dependencies` task (see the prefetch-input `parameter` of the [pipelinerun](.tekton/paketo-container-push.yaml)), to download the go modules needed to build the binary of the different go applications.
+This project contains the information used by [cachi2](containerbuildsystem), executed part of the Konflux `prefetch-dependencies` task (see the prefetch-input `parameter` of the [pipelinerun](.tekton/paketo-container-push.yaml)), to download the go modules needed to build the binary of the different applications.
 
 Such applications are declared as [git submodules](.gitmodules) and listed hereafter
 
