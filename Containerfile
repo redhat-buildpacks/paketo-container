@@ -1,7 +1,7 @@
 #FROM registry.access.redhat.com/ubi9/ubi:latest@sha256:b00d5990a00937bd1ef7f44547af6c7fd36e3fd410e2c89b5d2dfc1aff69fe99 as builder
-FROM fedora:42 as builder
+FROM registry.fedoraproject.org/fedora:40 as builder
 
-RUN dnf -y install golang
+RUN dnf -y install golang gcc
 
 # Build pack: Go mod version: 1.22.5
 #WORKDIR /go/src/buildpacks/syft
@@ -30,7 +30,7 @@ RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.23.0 go build -ldflags="-s -w" -o create-packa
 
 # Rebase on ubi9
 #FROM registry.access.redhat.com/ubi9:latest@sha256:9e6a89ab2a9224712391c77fab2ab01009e387aff42854826427aaf18b98b1ff
-FROM fedora:42
+FROM registry.fedoraproject.org/fedora:40
 RUN dnf -y install gettext jq podman
 
 #COPY --from=builder /go/src/buildpacks/syft/build/syft                 /usr/bin/syft
