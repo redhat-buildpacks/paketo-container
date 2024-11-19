@@ -144,7 +144,7 @@ spec:
           yq 'del(.goproxy_url)' <<<"${CONFIG_FILE_CONTENT}"  >/mnt/config/config.yaml
         fi
     - name: prefetch-dependencies
-      image: quay.io/redhat-appstudio/cachi2:0.12.0@sha256:fe47aeb09dcf0bfb8b40df0a01f75fff1bd5af50a3c417096c7808270a6214c4
+      image: quay.io/redhat-appstudio/cachi2:0.14.0@sha256:3088e307f41894c0654b69bb199a4648ba31721d6173099cf6ca8ff259c0e457
       volumeMounts:
         - mountPath: /mnt/trusted-ca
           name: trusted-ca
