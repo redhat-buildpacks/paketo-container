@@ -88,6 +88,20 @@ arches:
     name: elfutils-debuginfod-client
     evr: 0.191-4.fc40
     sourcerpm: elfutils-0.191-4.fc40.src.rpm
+  - url: https://kojipkgs.fedoraproject.org/compose/40/latest-Fedora-40/compose/Everything/x86_64/os/Packages/e/elfutils-libelf-0.191-4.fc40.x86_64.rpm
+    repoid: fedora
+    size: 214836
+    checksum: sha256:c1eca14924981b987f9b17c01a97511d641f49ac6b2b0f2d8e83563343932302
+    name: elfutils-libelf
+    evr: 0.191-4.fc40
+    sourcerpm: elfutils-0.191-4.fc40.src.rpm
+  - url: https://kojipkgs.fedoraproject.org/compose/40/latest-Fedora-40/compose/Everything/x86_64/os/Packages/e/elfutils-libs-0.191-4.fc40.x86_64.rpm
+    repoid: fedora
+    size: 266119
+    checksum: sha256:d7d1ed3fca0696b8c38effe21bc70c84a94cb66c0b59bb1980c0f455d23b7fec
+    name: elfutils-libs
+    evr: 0.191-4.fc40
+    sourcerpm: elfutils-0.191-4.fc40.src.rpm
   - url: https://kojipkgs.fedoraproject.org/compose/40/latest-Fedora-40/compose/Everything/x86_64/os/Packages/e/emacs-filesystem-29.2-3.fc40.noarch.rpm
     repoid: fedora
     size: 7968
@@ -396,6 +410,13 @@ arches:
     name: libseccomp
     evr: 2.5.3-8.fc40
     sourcerpm: libseccomp-2.5.3-8.fc40.src.rpm
+  - url: https://kojipkgs.fedoraproject.org/compose/40/latest-Fedora-40/compose/Everything/x86_64/os/Packages/l/libxcrypt-4.4.36-5.fc40.x86_64.rpm
+    repoid: fedora
+    size: 120913
+    checksum: sha256:26c27a101cf40f84f313d81a28cbca9450e8d901e6fcd315ac6036895a369b92
+    name: libxcrypt
+    evr: 4.4.36-5.fc40
+    sourcerpm: libxcrypt-4.4.36-5.fc40.src.rpm
   - url: https://kojipkgs.fedoraproject.org/compose/40/latest-Fedora-40/compose/Everything/x86_64/os/Packages/l/libxcrypt-devel-4.4.36-5.fc40.x86_64.rpm
     repoid: fedora
     size: 29323
