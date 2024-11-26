@@ -4,9 +4,9 @@ FROM registry.fedoraproject.org/fedora:40 as builder
 RUN dnf -y install golang gcc
 
 # Cosign
-WORKDIR /cosign
-RUN curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-2.4.1-1.x86_64.rpm"
-RUN sudo rpm -ivh cosign-2.4.1-1.x86_64.rpm
+#WORKDIR /cosign
+#RUN curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-2.4.1-1.x86_64.rpm"
+#RUN sudo rpm -ivh cosign-2.4.1-1.x86_64.rpm
 
 # Installing syft
 #WORKDIR /syft
@@ -44,7 +44,7 @@ FROM registry.fedoraproject.org/fedora:40
 RUN dnf -y install gettext jq podman
 
 #COPY --from=builder /usr/bin/cosign                                    /usr/bin/cosign
-COPY --from=builder /syft/syft                                         /usr/bin/syft
+#COPY --from=builder /syft/syft                                         /usr/bin/syft
 COPY --from=builder /go/src/buildpacks/toml/tomljson                   /usr/bin/tomljson
 COPY --from=builder /go/src/buildpacks/pack/pack                       /usr/bin/pack
 COPY --from=builder /go/src/buildpacks/jam/jam                         /usr/bin/jam
