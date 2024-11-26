@@ -9,8 +9,8 @@ RUN curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosi
 RUN sudo rpm -ivh cosign-2.4.1-1.x86_64.rpm
 
 # Installing syft
-WORKDIR /syft
-RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b .
+#WORKDIR /syft
+#RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b .
 
 # The following code don't work using syft as submodule as we got as error: The cloned repository contains symlink pointing outside of the cloned repository
 # Build Syft: Go mod version: 1.22.0
@@ -43,7 +43,7 @@ RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.23.0 go build -ldflags="-s -w" -o create-packa
 FROM registry.fedoraproject.org/fedora:40
 RUN dnf -y install gettext jq podman
 
-COPY --from=builder /usr/bin/cosign                                    /usr/bin/cosign
+#COPY --from=builder /usr/bin/cosign                                    /usr/bin/cosign
 COPY --from=builder /syft/syft                                         /usr/bin/syft
 COPY --from=builder /go/src/buildpacks/toml/tomljson                   /usr/bin/tomljson
 COPY --from=builder /go/src/buildpacks/pack/pack                       /usr/bin/pack

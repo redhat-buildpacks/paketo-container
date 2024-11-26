@@ -30,6 +30,16 @@ This section details what you should do as developer to design a project able to
 and that you will next use on konflux to build your own artefacts in a hermetic environment. You will then be able to replace the default `buildah` image with yours
 within the task: `build-container`.
 
+To get the [rpms.lock.yaml](rpms.lock.yaml) it is needed to install the following python tool:rpm-lockfile-prototype on a rhel/fedora machine:
+```bash
+sudo dnf install skopeo
+
+python -m venv venv --system-site-packages
+. venv/bin/activate
+pip install --user https://github.com/konflux-ci/rpm-lockfile-prototype/archive/refs/heads/main.zip
+rpm-lockfile-prototype rpms.in.yaml
+```
+
 
 
 
