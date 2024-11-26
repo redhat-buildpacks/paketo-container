@@ -12,6 +12,6 @@
 [submodule "toml"]
 	path = toml
 	url = https://github.com/pelletier/go-toml.git
-#[submodule "syft"]
-#	path = syft
-#	url = https://github.com/anchore/syft.git
+[submodule "syft"]
+	path = syft
+	url = https://github.com/anchore/syft.git
