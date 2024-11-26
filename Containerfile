@@ -6,7 +6,7 @@ RUN dnf -y install golang gcc
 # Cosign
 WORKDIR /go/src/buildpacks/cosign
 COPY cosign .
-RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -a ./cmd/cosign
+RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.8 go build -ldflags "-s -w" -a ./cmd/cosign
 
 # Installing syft
 #WORKDIR /syft
