@@ -12,3 +12,6 @@
 [submodule "toml"]
 	path = toml
 	url = https://github.com/pelletier/go-toml.git
+[submodule "cosign"]
+	path = cosign
+	url = https://github.com/sigstore/cosign.git
