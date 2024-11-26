@@ -14,9 +14,9 @@ RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w" -a ./cmd/cosign
 
 # The following code don't work using syft as submodule as we got as error: The cloned repository contains symlink pointing outside of the cloned repository
 # Build Syft: Go mod version: 1.22.0
-# WORKDIR /go/src/buildpacks/syft
-# COPY syft/ .
-# RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w -X main.version=1.14.x" -o build/syft -a ./cmd/syft/main.go
+WORKDIR /go/src/buildpacks/syft
+COPY syft/ .
+RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w -X main.version=1.14.x" -o build/syft -a ./cmd/syft/main.go
 
 # Build toml: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/toml
@@ -43,8 +43,8 @@ RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.23.0 go build -ldflags="-s -w" -o create-packa
 FROM registry.fedoraproject.org/fedora:40
 RUN dnf -y install gettext jq podman
 
-#COPY --from=builder /syft/syft                                        /usr/bin/syft
-COPY --from=builder /go/src/buildpacks/cosign/cosign                          /usr/bin/cosign
+COPY --from=builder /go/src/buildpacks/syft/build/syft                 /usr/bin/syft
+COPY --from=builder /go/src/buildpacks/cosign/cosign                   /usr/bin/cosign
 COPY --from=builder /go/src/buildpacks/toml/tomljson                   /usr/bin/tomljson
 COPY --from=builder /go/src/buildpacks/pack/pack                       /usr/bin/pack
 COPY --from=builder /go/src/buildpacks/jam/jam                         /usr/bin/jam

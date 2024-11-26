@@ -38,7 +38,7 @@ spec:
   - name: dev-package-managers
     value: "true"
   - name: enableSymlinkCheck
-    value: "true"
+    value: "false"
   - name: cachi2-log-level
     value: "debug"
   pipelineRef:
