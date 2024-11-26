@@ -3,14 +3,20 @@ FROM registry.fedoraproject.org/fedora:40 as builder
 
 RUN dnf -y install golang gcc
 
-# Build Syft: Go mod version: 1.22.0
+# Cosign
+RUN LATEST_VERSION=$(curl https://api.github.com/repos/sigstore/cosign/releases/latest | grep tag_name | cut -d : -f2 | tr -d "v\", ") &&
+    curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-${LATEST_VERSION}-1.x86_64.rpm" &&
+    sudo rpm -ivh cosign-${LATEST_VERSION}-1.x86_64.rpm
+
+# Installing syft
 WORKDIR /syft
 RUN curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b .
 
 # The following code don't work using syft as submodule as we got as error: The cloned repository contains symlink pointing outside of the cloned repository
-#WORKDIR /go/src/buildpacks/syft
-#COPY syft/ .
-#RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w -X main.version=1.14.x" -o build/syft -a ./cmd/syft/main.go
+# Build Syft: Go mod version: 1.22.0
+# WORKDIR /go/src/buildpacks/syft
+# COPY syft/ .
+# RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.22.0 go build -ldflags "-s -w -X main.version=1.14.x" -o build/syft -a ./cmd/syft/main.go
 
 # Build toml: Go mod version: 1.22.0
 WORKDIR /go/src/buildpacks/toml
@@ -37,7 +43,8 @@ RUN CGO_ENABLED=0 GOTOOLCHAIN=go1.23.0 go build -ldflags="-s -w" -o create-packa
 FROM registry.fedoraproject.org/fedora:40
 RUN dnf -y install gettext jq podman
 
-COPY --from=builder /syft/syft                /usr/bin/syft
+COPY --from=builder /usr/bin/cosign                                    /usr/bin/cosign
+COPY --from=builder /syft/syft                                         /usr/bin/syft
 COPY --from=builder /go/src/buildpacks/toml/tomljson                   /usr/bin/tomljson
 COPY --from=builder /go/src/buildpacks/pack/pack                       /usr/bin/pack
 COPY --from=builder /go/src/buildpacks/jam/jam                         /usr/bin/jam
