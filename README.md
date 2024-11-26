@@ -12,7 +12,7 @@ Such applications are declared as [git submodules](.gitmodules) and listed herea
 The commands to build them, to move the binary within the `/usr/bin` folder, etc. are declared part of the [Dockerfile](Containerfile).
 Such a Dockerfile is build using the konflux [pipeline](.tekton/build-pipeline.yaml) - see task `build-container`.
 
-The RPMs which should also be installed to build the project or within the final image created top of a red hat ubi9 image
+The RPMs which should also be installed to build the project or within the final image created top of a fedora image
 are listed part of the file [rpms.in.yaml](rpms.in.yaml). The rpm urls are populated using the [tool](https://github.com/konflux-ci/rpm-lockfile-prototype) within the lock file: [rpms.lock.yaml](rpms.lock.yaml) and their [ubi.repo](ubi.repo).
 
 The image generated `quay.io/redhat-user-workloads/cmoullia-tenant/paketo-container/paketo-container` by konflux 
